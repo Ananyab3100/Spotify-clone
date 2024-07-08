@@ -8,10 +8,12 @@ import songContext from '../context/songContext';
 import CreatePlaylistModal from '../modals/CreatePlaylistModal';
 import AddToPlaylistModal from '../modals/AddToPlaylistModal';
 import { makeAuthenticatedPOSTRequest } from '../utils/serverHelpers';
+import { useNavigate } from 'react-router-dom';
 
 const LoggedInContainer = ({children,curActiveScreen,onClick}) => {
  const[createPlaylistModalOpen,setCreatePlaylistModalOpen] = useState(false);
  const[addToPlaylistModalOpen,setAddToPlaylistModalOpen] = useState(false);
+ const [likedSongs, setLikedSongs] = useState([]); // State to store liked songs
 
   const {currentSong, setCurrentSong,soundPlayed ,setSoundPlayed,isPaused, setIsPaused}  = useContext(songContext);
   
@@ -84,6 +86,9 @@ const togglePlayPause = () =>{
   }
 }
 
+
+const navigate = useNavigate();
+
   return (
    
   
@@ -145,7 +150,7 @@ const togglePlayPause = () =>{
        
 
           <div className="w-2/5 flex justify-around h-full items-center">
-          <TextWithHover displayText={"Upload song"}/>
+          <TextWithHover displayText={"Upload song"} onClick={() => navigate("/uploadSong")}/>
           <div className="bg-white w-10 h-10 flex items-center justify-center rounded-full font-semibold cursor-pointer">
             AB
           </div>
@@ -192,7 +197,9 @@ const togglePlayPause = () =>{
     onClick={() =>{
       setAddToPlaylistModalOpen(true);
     }} />
-    <Icon icon="solar:heart-bold" fontSize={30} className="cursor-pointer text-gray-500 hover:text-white"/>
+    <Icon icon="solar:heart-bold" fontSize={30} className="cursor-pointer text-gray-500 hover:text-white"
+    
+    />
     </div>
    </div>
     }

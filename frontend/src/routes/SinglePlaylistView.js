@@ -8,6 +8,7 @@ import { makeAuthenticatedGETRequest } from '../utils/serverHelpers';
 const SinglePlaylistView = () => {
     const {playlistId} = useParams();
     const [playlistDetails,setPlaylistDetails] = useState({});
+    console.log(playlistDetails);
 
     useEffect(() =>{
         const getData = async() =>{
@@ -21,12 +22,12 @@ const SinglePlaylistView = () => {
     },[])
 
   return (
-    <div>
+    <div className="h-full">
  <LoggedInContainer curActiveScreen={"library"}>
     {playlistDetails._id && 
     <div>
         
- <div className="text-white text-xl pt-8">Playlist's Name</div>
+ <div className="text-white text-xl pt-8">{playlistDetails.name}</div>
  <div className ="pt-10 space-y-3">
             {playlistDetails.songs.map((item) =>{
                 return <SingleSongCard info={item}

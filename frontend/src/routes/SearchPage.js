@@ -16,7 +16,7 @@ const SearchPage = () => {
        const response = await  makeAuthenticatedGETRequest("/song/get/songname/" + searchText);
     //    console.log(response);
        setSongData(response.data);
-       setSearchText("");
+    //    setSearchText("");
        
     }
 
@@ -48,9 +48,9 @@ const SearchPage = () => {
         </div>
         { songData.length >0 ?
         (<div className ="pt-10 space-y-3">
-            <div className="text-white">
-            Showing search results for "<span className ="font-bold">{searchText}</span>" are :
-            </div>
+            <p className="text-white">
+            Showing search results for <span className ="font-bold">{searchText}</span> are :
+            </p>
             {songData.map((item) =>{
                 return <SingleSongCard info={item}
                  key={JSON.stringify(item)}

@@ -12,6 +12,7 @@ import SinglePlaylistView from './routes/SinglePlaylistView';
 import { useCookies } from 'react-cookie';
 import  songContext  from './context/songContext';
 import { useState } from 'react';
+import LikedSongs from './routes/LikedSongs';
 
 
 function App() {
@@ -29,13 +30,15 @@ function App() {
         <songContext.Provider value={{currentSong, setCurrentSong,soundPlayed ,setSoundPlayed,isPaused, setIsPaused}}>
       <Routes>
       
-        <Route path="/" element={<div>Hello</div>}></Route>
+        <Route path="/" element={<LoginComponent/>}></Route>
+        <Route path="/signup" element={<SignupComponent/>}></Route>
         <Route path="/home" element={<LoggedInHomeComponent/>}></Route>
         <Route path="/uploadSong" element={<UploadSong/>}></Route>
         <Route path="/myMusic" element={<MyMusic/>}></Route>
         <Route path="/search" element={<SearchPage/>}></Route>
         <Route path="/library" element={<Library/>}></Route>
         <Route path="/playlist/:playlistId" element={<SinglePlaylistView/>}></Route>
+        <Route path="/likedSongs" element={<LikedSongs />} />
         <Route path="*" element={<Navigate to="/home"/>}></Route>
       
       </Routes>

@@ -23,7 +23,11 @@ const Song = mongoose.Schema({
       type:mongoose.Types.ObjectId,
       ref: "User",
 
-    }
+    },
+    likedBy: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+  }]
     
 });
 
